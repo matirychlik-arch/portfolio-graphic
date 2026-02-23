@@ -2385,9 +2385,18 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
     { type: 'cover',    label: 'Okładka\ngry',            w: 100, h: 130, color: '#5C3D1E', tx: '#F7F2EB', rot: 7   },
     { type: 'tablet',   label: 'Motion\nDesign',          w: 130, h: 95,  color: '#EDE8DF', tx: '#1A1410', rot: -4  },
     { type: 'magazine', label: 'Cyrulicy\nBrand',         w: 95,  h: 125, color: '#F7F2EB', tx: '#1A1410', rot: 10  },
-    { type: 'book',     label: 'Komiks\nIP',              w: 85,  h: 115, color: '#8B4513', tx: '#F7F2EB', rot: -6  },
+    { type: 'book',     label: 'Komiks\nIP',              w: 170, h: 230, color: '#8B4513', tx: '#F7F2EB', rot: -6, imgSrc: 'SCREENY%20DO%20HOME/hf_20260223_190052_0a8d7285-4e19-46b7-947f-4db9aa7c2a0d.png'  },
     { type: 'card',     label: 'DTP\nPrint',              w: 110, h: 75,  color: '#DDD6CC', tx: '#1A1410', rot: 15  },
   ];
+
+  // Preload images declared in artifacts (img.complete checked each frame in drawCard)
+  ARTIFACTS.forEach(art => {
+    if (art.imgSrc) {
+      const img = new Image();
+      img.src = art.imgSrc;
+      art.img = img;
+    }
+  });
 
   // Scale artifacts to % of hero width (right half)
   const SCALE = 1.7;
@@ -2485,54 +2494,69 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
       const hh = art.h * SCALE / 2;
       const r  = 10;
 
-      // Drop shadow
-      ctx.shadowColor    = 'rgba(26,20,16,0.22)';
-      ctx.shadowBlur     = 24;
-      ctx.shadowOffsetX  = 3;
-      ctx.shadowOffsetY  = 8;
+      if (art.img && art.img.complete && art.img.naturalWidth > 0) {
+        // ── Real PNG mockup: draw raw, no background container ──
+        ctx.shadowColor    = 'rgba(26,20,16,0.30)';
+        ctx.shadowBlur     = 32;
+        ctx.shadowOffsetX  = 4;
+        ctx.shadowOffsetY  = 12;
+        ctx.drawImage(art.img, -hw, -hh, hw * 2, hh * 2);
 
-      // Rounded rect path
-      ctx.beginPath();
-      ctx.moveTo(-hw + r, -hh);
-      ctx.lineTo( hw - r, -hh);
-      ctx.arcTo(  hw, -hh,  hw, -hh + r, r);
-      ctx.lineTo( hw,  hh - r);
-      ctx.arcTo(  hw,  hh,  hw - r, hh,  r);
-      ctx.lineTo(-hw + r, hh);
-      ctx.arcTo( -hw, hh, -hw, hh - r, r);
-      ctx.lineTo(-hw, -hh + r);
-      ctx.arcTo( -hw, -hh, -hw + r, -hh, r);
-      ctx.closePath();
+      } else {
+        // ── Placeholder card: rounded rect + color + label ──
 
-      ctx.fillStyle = art.color;
-      ctx.fill();
-      ctx.shadowColor = 'transparent';
+        // Build rounded-rect path
+        function rrPath() {
+          ctx.beginPath();
+          ctx.moveTo(-hw + r, -hh);
+          ctx.lineTo( hw - r, -hh);
+          ctx.arcTo(  hw, -hh,  hw, -hh + r, r);
+          ctx.lineTo( hw,  hh - r);
+          ctx.arcTo(  hw,  hh,  hw - r, hh,  r);
+          ctx.lineTo(-hw + r, hh);
+          ctx.arcTo( -hw, hh, -hw, hh - r, r);
+          ctx.lineTo(-hw, -hh + r);
+          ctx.arcTo( -hw, -hh, -hw + r, -hh, r);
+          ctx.closePath();
+        }
 
-      // Subtle border on light cards
-      const lightCards = ['#F7F2EB', '#EDE8DF', '#DDD6CC'];
-      if (lightCards.includes(art.color)) {
-        ctx.strokeStyle = 'rgba(26,20,16,0.12)';
-        ctx.lineWidth   = 1;
-        ctx.stroke();
-      }
-
-      // Label
-      ctx.fillStyle    = art.tx;
-      ctx.font         = `600 ${Math.round(11 * SCALE)}px Inter, sans-serif`;
-      ctx.textAlign    = 'center';
-      ctx.textBaseline = 'middle';
-      const lines = art.label.split('\n');
-      const lh    = 15 * SCALE;
-      lines.forEach((line, i) => {
-        ctx.fillText(line, 0, (i - (lines.length - 1) / 2) * lh);
-      });
-
-      // White dot accent for orange card
-      if (art.color === '#FF4D00') {
-        ctx.fillStyle = 'rgba(255,255,255,0.8)';
-        ctx.beginPath();
-        ctx.arc(hw - 14, -hh + 14, 5, 0, Math.PI * 2);
+        // Drop shadow
+        ctx.shadowColor    = 'rgba(26,20,16,0.22)';
+        ctx.shadowBlur     = 24;
+        ctx.shadowOffsetX  = 3;
+        ctx.shadowOffsetY  = 8;
+        rrPath();
+        ctx.fillStyle = art.color;
         ctx.fill();
+        ctx.shadowColor = 'transparent';
+
+        // Subtle border on light cards
+        const lightCards = ['#F7F2EB', '#EDE8DF', '#DDD6CC'];
+        if (lightCards.includes(art.color)) {
+          rrPath();
+          ctx.strokeStyle = 'rgba(26,20,16,0.12)';
+          ctx.lineWidth   = 1;
+          ctx.stroke();
+        }
+
+        // Label
+        ctx.fillStyle    = art.tx;
+        ctx.font         = `600 ${Math.round(11 * SCALE)}px Inter, sans-serif`;
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        const lines = art.label.split('\n');
+        const lh    = 15 * SCALE;
+        lines.forEach((line, i) => {
+          ctx.fillText(line, 0, (i - (lines.length - 1) / 2) * lh);
+        });
+
+        // White dot accent for orange card
+        if (art.color === '#FF4D00') {
+          ctx.fillStyle = 'rgba(255,255,255,0.8)';
+          ctx.beginPath();
+          ctx.arc(hw - 14, -hh + 14, 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
       ctx.restore();
