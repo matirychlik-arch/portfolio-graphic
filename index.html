@@ -2379,14 +2379,14 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
   // Matter.js loaded via CDN in <head> — see script tag above
   // Artefacts: placeholders for real project work (poster, flyer, tablet, phone, etc.)
   const ARTIFACTS = [
-    { type: 'poster',   label: 'Plakat\nNowe Horyzonty',  w: 90,  h: 130, color: '#1A1410', tx: '#F7F2EB', rot: -8  },
-    { type: 'flyer',    label: 'Ulotka\nFestiwal',        w: 120, h: 85,  color: '#FF4D00', tx: '#FFFFFF', rot: 5   },
-    { type: 'phone',    label: 'Vidsy\nReel',             w: 65,  h: 115, color: '#2C2420', tx: '#F7F2EB', rot: -12 },
-    { type: 'cover',    label: 'Okładka\ngry',            w: 100, h: 130, color: '#5C3D1E', tx: '#F7F2EB', rot: 7   },
-    { type: 'tablet',   label: 'Motion\nDesign',          w: 130, h: 95,  color: '#EDE8DF', tx: '#1A1410', rot: -4  },
-    { type: 'magazine', label: 'Cyrulicy\nBrand',         w: 95,  h: 125, color: '#F7F2EB', tx: '#1A1410', rot: 10  },
-    { type: 'book',     label: 'Komiks\nIP',              w: 170, h: 230, color: '#8B4513', tx: '#F7F2EB', rot: -6, imgSrc: 'SCREENY%20DO%20HOME/hf_20260223_190052_0a8d7285-4e19-46b7-947f-4db9aa7c2a0d.png'  },
-    { type: 'card',     label: 'DTP\nPrint',              w: 110, h: 75,  color: '#DDD6CC', tx: '#1A1410', rot: 15  },
+    { type: 'poster',   label: 'Plakat\nNowe Horyzonty',  w: 90,  h: 130, color: '#1A1410', tx: '#F7F2EB', rot: -8,  thickness: 5  },
+    { type: 'flyer',    label: 'Ulotka\nFestiwal',        w: 120, h: 85,  color: '#FF4D00', tx: '#FFFFFF', rot: 5,   thickness: 4  },
+    { type: 'phone',    label: 'Vidsy\nReel',             w: 65,  h: 115, color: '#2C2420', tx: '#F7F2EB', rot: -12, thickness: 10 },
+    { type: 'cover',    label: 'Okładka\ngry',            w: 100, h: 130, color: '#5C3D1E', tx: '#F7F2EB', rot: 7,   thickness: 12 },
+    { type: 'tablet',   label: 'Motion\nDesign',          w: 130, h: 95,  color: '#EDE8DF', tx: '#1A1410', rot: -4,  thickness: 9  },
+    { type: 'magazine', label: 'Cyrulicy\nBrand',         w: 95,  h: 125, color: '#F7F2EB', tx: '#1A1410', rot: 10,  thickness: 8  },
+    { type: 'book',     label: 'Komiks\nIP',              w: 115, h: 165, color: '#1a1a2e', tx: '#F7F2EB', rot: -6,  thickness: 22, imgSrc: 'SCREENY%20DO%20HOME/02c3d85d-48f5-4b1e-bfc3-745c5ceca4b8.png' },
+    { type: 'card',     label: 'DTP\nPrint',              w: 110, h: 75,  color: '#DDD6CC', tx: '#1A1410', rot: 15,  thickness: 3  },
   ];
 
   // Preload images declared in artifacts (img.complete checked each frame in drawCard)
@@ -2418,6 +2418,7 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
     canvas.style.height = H + 'px';
 
     const ctx = canvas.getContext('2d');
+
     // ZERO GRAVITY — obiekty zawieszają się w powietrzu, fizyka działa między nimi
     const engine = Engine.create({
       gravity: { x: 0, y: 0 },
@@ -2484,7 +2485,7 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
     // Brak dodatkowego impulsu na release — Matter.js automatycznie
     // nadaje obiektowi velocity z prędkości myszy w momencie puszczenia.
 
-    // Draw a single artifact card
+    // Draw a single artifact card (flat)
     function drawCard(body, art) {
       ctx.save();
       ctx.translate(body.position.x, body.position.y);
@@ -2495,45 +2496,50 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
       const r  = 10;
 
       if (art.img && art.img.complete && art.img.naturalWidth > 0) {
-        // ── Real PNG mockup: draw raw, no background container ──
-        ctx.shadowColor    = 'rgba(26,20,16,0.30)';
-        ctx.shadowBlur     = 32;
-        ctx.shadowOffsetX  = 4;
-        ctx.shadowOffsetY  = 12;
+        // Real PNG — draw with shadow, clipped to rounded rect
+        ctx.shadowColor    = 'rgba(26,20,16,0.28)';
+        ctx.shadowBlur     = 28;
+        ctx.shadowOffsetX  = 3;
+        ctx.shadowOffsetY  = 10;
+        // Draw fill first so shadow appears under the image
+        ctx.beginPath();
+        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
+        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
+        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
+        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
+        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
+        ctx.fillStyle = art.color;
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        // Clip and draw PNG
+        ctx.beginPath();
+        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
+        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
+        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
+        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
+        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
+        ctx.clip();
         ctx.drawImage(art.img, -hw, -hh, hw * 2, hh * 2);
 
       } else {
-        // ── Placeholder card: rounded rect + color + label ──
-
-        // Build rounded-rect path
-        function rrPath() {
-          ctx.beginPath();
-          ctx.moveTo(-hw + r, -hh);
-          ctx.lineTo( hw - r, -hh);
-          ctx.arcTo(  hw, -hh,  hw, -hh + r, r);
-          ctx.lineTo( hw,  hh - r);
-          ctx.arcTo(  hw,  hh,  hw - r, hh,  r);
-          ctx.lineTo(-hw + r, hh);
-          ctx.arcTo( -hw, hh, -hw, hh - r, r);
-          ctx.lineTo(-hw, -hh + r);
-          ctx.arcTo( -hw, -hh, -hw + r, -hh, r);
-          ctx.closePath();
-        }
-
-        // Drop shadow
+        // Placeholder: rounded rect + color + label
         ctx.shadowColor    = 'rgba(26,20,16,0.22)';
         ctx.shadowBlur     = 24;
         ctx.shadowOffsetX  = 3;
         ctx.shadowOffsetY  = 8;
-        rrPath();
+        ctx.beginPath();
+        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
+        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
+        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
+        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
+        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
         ctx.fillStyle = art.color;
         ctx.fill();
         ctx.shadowColor = 'transparent';
 
-        // Subtle border on light cards
+        // Border on light cards
         const lightCards = ['#F7F2EB', '#EDE8DF', '#DDD6CC'];
         if (lightCards.includes(art.color)) {
-          rrPath();
           ctx.strokeStyle = 'rgba(26,20,16,0.12)';
           ctx.lineWidth   = 1;
           ctx.stroke();
@@ -2550,7 +2556,7 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
           ctx.fillText(line, 0, (i - (lines.length - 1) / 2) * lh);
         });
 
-        // White dot accent for orange card
+        // White dot on orange card
         if (art.color === '#FF4D00') {
           ctx.fillStyle = 'rgba(255,255,255,0.8)';
           ctx.beginPath();
@@ -2605,7 +2611,6 @@ console.log('[physics] IIFE reached, Matter=', typeof Matter);
         const t = floatTick;
 
         // Lissajous-like drift: różne częstotliwości X i Y → niepowtarzalna pętla
-        // Mniejsza amplituda — przy niskim frictionAir siły łatwo się akumulują
         const fx = Math.sin(t * 0.011 + p * 2.1) * 0.000035;
         const fy = Math.cos(t * 0.016 + p * 1.7) * 0.000030;
         Body.applyForce(body, body.position, { x: fx, y: fy });
