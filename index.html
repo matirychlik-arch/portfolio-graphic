@@ -219,7 +219,7 @@ nav {
 .hero-title .line:nth-child(2) span { animation-delay: 0.35s; }
 .hero-title .line:nth-child(3) span { animation-delay: 0.5s; }
 
-.hero-line-1 { font-size: clamp(40px, 5.5vw, 90px); color: var(--text); }
+.hero-line-1 { font-size: clamp(40px, 5.5vw, 90px); color: var(--accent); }
 .hero-line-2 {
   font-size: clamp(40px, 5.5vw, 90px);
   color: var(--text-muted);
@@ -1021,7 +1021,7 @@ footer {
   <div class="nav-links">
     <a href="#work" data-i18n="nav-work">Prace</a>
     <a href="#about" data-i18n="nav-about">O mnie</a>
-    <a href="#experience" data-i18n="nav-exp">Droga twórcza</a>
+    <a href="#experience" data-i18n="nav-exp">Doświadczenie</a>
     <button class="nav-cta" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})">Contact</button>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
       <span class="lang-current">PL</span>
@@ -1095,7 +1095,7 @@ footer {
     </h1>
     <div class="hero-bottom">
       <div style="display:flex; flex-direction:column; gap:20px; max-width:420px;">
-        <p class="hero-tagline" data-i18n="hero-tagline">Grafika, motion design i produkcja filmowa — tworzę spójne identyfikacje wizualne, kampanie i materiały wideo dla marek, które chcą być zapamiętane.</p>
+        <p class="hero-tagline" data-i18n="hero-tagline">Identyfikacje wizualne, kampanie i materiały DTP — od projektu po gotowy plik, dla marek które chcą być zapamiętane.</p>
         <div style="display:flex; gap:12px; align-items:center;">
           <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
           <a href="#work" style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-decoration:none; letter-spacing:0.05em;">↓ Zobacz prace</a>
@@ -1193,7 +1193,7 @@ footer {
             <span class="project-tag">Branding</span>
           </div>
           <h3 class="project-name" data-i18n="name-festivale">Nowe Horyzonty &amp; American Film Festival</h3>
-          <p class="project-desc" data-i18n="desc-festivale">W latach 2014–2019 znaczna większość grafik i materiałów wideo dla tych festiwali i kina NH powstawała przy moim udziale — druk, social media, ekrany, materiały eventowe.</p>
+          <p class="project-desc" data-i18n="desc-festivale">W latach 2014–2019 tworzyłem niemal całość produkcji wizualnej festiwali Nowe Horyzonty i American Film Festival — plakaty, DTP i materiały drukowane (ulotki, programy, bannery, magazyny), social media, grafiki eventowe i animacje.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </div>
@@ -1674,8 +1674,8 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="about-content reveal">
       <h3 data-i18n="about-h3">Jestem grafikiem, który <em>rozumie obraz</em></h3>
-      <p class="about-text" data-i18n="about-p1">Mam filmowo-fotograficzne wyczucie obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, budując świadome podejście do koloru, światła i kompozycji.</p>
-      <p class="about-text" data-i18n="about-p2">Przez lata tworzyłem identyfikacje wizualne festiwali filmowych, kampanie dla globalnych marek i materiały wideo — od projektu przez DTP po finalną realizację.</p>
+      <p class="about-text" data-i18n="about-p1">Przez lata tworzyłem identyfikacje wizualne, kampanie i materiały DTP dla festiwali filmowych i globalnych marek — od projektu koncepcyjnego po finalne pliki produkcyjne.</p>
+      <p class="about-text" data-i18n="about-p2">Mam filmowo-fotograficzne wyczucie obrazu — studiowałem na Wydziale Operatorskim Szkoły Filmowej. To przekłada się na jakość każdej grafiki, nie tylko wideo.</p>
       <p class="about-text" data-i18n="about-p3">AI traktuję jako narzędzie wspomagające workflow — generator pomysłów, przyspieszacz iteracji. Ale żaden algorytm nie zastąpi świadomości wizualnej i doświadczenia w pracy z klientem.</p>
 
       <div class="about-stats">
@@ -1689,7 +1689,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div>
           <div class="stat-number">∞</div>
-          <div class="stat-label" data-i18n="stat-frames">Kadrów filmowych</div>
+          <div class="stat-label" data-i18n="stat-frames">Print · Digital · Motion</div>
         </div>
       </div>
     </div>
@@ -1922,11 +1922,11 @@ const TRANSLATIONS = {
     // NAV
     'nav-work':     'Prace',
     'nav-about':    'O mnie',
-    'nav-exp':      'Droga twórcza',
+    'nav-exp':      'Doświadczenie',
     'nav-location': 'Wrocław, PL / ',
 
     // HERO
-    'hero-tagline': 'Grafika, motion design i produkcja filmowa — tworzę spójne identyfikacje wizualne, kampanie i materiały wideo dla marek, które chcą być zapamiętane.',
+    'hero-tagline': 'Identyfikacje wizualne, kampanie i materiały DTP — od projektu po gotowy plik, dla marek które chcą być zapamiętane.',
     'hero-scroll':  'Scroll',
 
     // BRANDS
@@ -1941,7 +1941,7 @@ const TRANSLATIONS = {
     'name-vidsy':    'Kampanie Vidsy',
     'desc-vidsy':    'Materiały wizualne i motion do kampanii Warcraft, Harry Potter, Gra o Tron, Assassin\'s Creed i wiele innych',
     'name-festivale':'Nowe Horyzonty & American Film Festival',
-    'desc-festivale':'W latach 2014–2019 znaczna większość grafik i materiałów wideo dla tych festiwali i kina NH powstawała przy moim udziale — druk, social media, ekrany, materiały eventowe.',
+    'desc-festivale':'W latach 2014–2019 tworzyłem niemal całość produkcji wizualnej festiwali Nowe Horyzonty i American Film Festival — plakaty, DTP i materiały drukowane (ulotki, programy, bannery, magazyny), social media, grafiki eventowe i animacje.',
     'name-ai':       'Eksperymenty wizualne',
     'desc-ai':       'Eksperymenty wizualne i badanie nowych estetyk — z pomocą narzędzi AI jako generatora pomysłów i inspiracji do dalszej pracy projektowej.',
     'name-agencies': 'Good Taste Agency',
@@ -1952,12 +1952,12 @@ const TRANSLATIONS = {
     // ABOUT
     'about-label':  '[ 02 — About ]',
     'about-h3':     'Jestem grafikiem, który <em>rozumie obraz</em>',
-    'about-p1':     'Mam filmowo-fotograficzne wyczucie obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, budując świadome podejście do koloru, światła i kompozycji.',
-    'about-p2':     'Przez lata tworzyłem identyfikacje wizualne festiwali filmowych, kampanie dla globalnych marek i materiały wideo — od projektu przez DTP po finalną realizację.',
+    'about-p1':     'Przez lata tworzyłem identyfikacje wizualne, kampanie i materiały DTP dla festiwali filmowych i globalnych marek — od projektu koncepcyjnego po finalne pliki produkcyjne.',
+    'about-p2':     'Mam filmowo-fotograficzne wyczucie obrazu — studiowałem na Wydziale Operatorskim Szkoły Filmowej. To przekłada się na jakość każdej grafiki, nie tylko wideo.',
     'about-p3':     'AI traktuję jako narzędzie wspomagające workflow — generator pomysłów, przyspieszacz iteracji. Ale żaden algorytm nie zastąpi świadomości wizualnej i doświadczenia w pracy z klientem.',
     'stat-exp':     'Lat doświadczenia',
     'stat-brands':  'Globalnych marek',
-    'stat-frames':  'Kadrów filmowych',
+    'stat-frames':  'Print · Digital · Motion',
 
     // PROCESS
     'process-label':'[ 03 — Proces ]',
@@ -2005,11 +2005,11 @@ const TRANSLATIONS = {
     // NAV
     'nav-work':     'Work',
     'nav-about':    'About',
-    'nav-exp':      'Creative path',
+    'nav-exp':      'Experience',
     'nav-location': 'Wrocław, PL / ',
 
     // HERO
-    'hero-tagline': 'Graphic design, motion and film production — I create consistent visual identities, campaigns and video content for brands that want to be remembered.',
+    'hero-tagline': 'Visual identities, campaigns and DTP materials — from concept to production-ready file, for brands that want to be remembered.',
     'hero-scroll':  'Scroll',
 
     // BRANDS
@@ -2035,12 +2035,12 @@ const TRANSLATIONS = {
     // ABOUT
     'about-label':  '[ 02 — About ]',
     'about-h3':     'I am a designer who <em>understands the image</em>',
-    'about-p1':     'I have a cinematic-photographic sensibility for the image. I studied at the Cinematography Department of Film School, developing a conscious approach to colour, light and composition.',
-    'about-p2':     'Over the years I have created visual identities for film festivals, campaigns for global brands and video materials — from design through DTP to final production.',
+    'about-p1':     'Over the years I have created visual identities, campaigns and DTP materials for film festivals and global brands — from initial concept to production-ready files.',
+    'about-p2':     'I have a cinematic-photographic sensibility for the image — I studied at the Cinematography Department of Film School. This translates into the quality of every design, not just video.',
     'about-p3':     'I use AI as a workflow support tool — a generator of ideas, an accelerator of iteration. But no algorithm replaces visual awareness and experience working with clients.',
     'stat-exp':     'Years of experience',
     'stat-brands':  'Global brands',
-    'stat-frames':  'Film frames',
+    'stat-frames':  'Print · Digital · Motion',
 
     // PROCESS
     'process-label':'[ 03 — Process ]',
