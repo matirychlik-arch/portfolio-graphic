@@ -1063,10 +1063,10 @@ footer {
     <div class="hero-stack-card" data-rot="15" data-ratio="1.471" style="left:-8px;top:8px;transform:rotate(15deg);z-index:8;">
       <img src="SCREENY%20DO%20HOME/13.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" data-rot="8" data-ratio="1.491" style="left:5px;top:-8px;transform:rotate(8deg);z-index:9;">
+    <div class="hero-stack-card" data-rot="8" data-ratio="1.491" data-scale="0.75" style="left:5px;top:-8px;transform:rotate(8deg);z-index:9;">
       <img src="SCREENY%20DO%20HOME/02c3d85d-48f5-4b1e-bfc3-745c5ceca4b8.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" data-rot="-12" data-ratio="1.446" style="left:0;top:0;transform:rotate(-12deg);z-index:10;">
+    <div class="hero-stack-card" data-rot="-12" data-ratio="1.446" data-scale="0.75" style="left:0;top:0;transform:rotate(-12deg);z-index:10;">
       <img src="SCREENY%20DO%20HOME/plakat%20nh.jpg" alt="" draggable="false">
     </div>
   </div>
@@ -2432,13 +2432,15 @@ document.addEventListener('keydown', function(e) {
     cards.forEach((card, i) => {
       const [lp, tp, rot] = startPositions[i] || [0.5 + Math.random() * 0.3, Math.random() * 0.7, (Math.random() - 0.5) * 30];
       const ratio = parseFloat(card.dataset.ratio) || (9 / 16);
-      const cardH = Math.round(cardW * ratio);
-      const left  = lp * W - cardW / 2;
+      const scale = parseFloat(card.dataset.scale) || 1;
+      const w     = Math.round(cardW * scale);
+      const cardH = Math.round(w * ratio);
+      const left  = lp * W - w / 2;
       const top   = tp * H - cardH / 2;
 
       hero.appendChild(card);
       card.style.position  = 'absolute';
-      card.style.width     = cardW + 'px';
+      card.style.width     = w + 'px';
       card.style.height    = cardH + 'px';
       card.style.left      = left + 'px';
       card.style.top       = top  + 'px';
@@ -2459,8 +2461,10 @@ document.addEventListener('keydown', function(e) {
     cards.forEach((card, i) => {
       const [lp, tp] = startPositions[i] || [0.5, 0.5];
       const ratio = parseFloat(card.dataset.ratio) || (9 / 16);
-      const cardH = Math.round(cardW * ratio);
-      card.style.width  = cardW + 'px';
+      const scale = parseFloat(card.dataset.scale) || 1;
+      const w     = Math.round(cardW * scale);
+      const cardH = Math.round(w * ratio);
+      card.style.width  = w + 'px';
       card.style.height = cardH + 'px';
       card.style.left   = (lp * W - cardW / 2) + 'px';
       card.style.top    = (tp * H - cardH / 2) + 'px';
