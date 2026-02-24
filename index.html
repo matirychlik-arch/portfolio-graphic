@@ -1063,11 +1063,11 @@ footer {
     <div class="hero-stack-card" data-rot="-2" data-ratio="1.471" data-scale="0.75" style="left:0;top:0;transform:rotate(-2deg);z-index:8;">
       <img src="SCREENY%20DO%20HOME/13.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" data-rot="8" data-ratio="1.0" data-scale="0.5" style="left:0;top:0;transform:rotate(8deg);z-index:9;">
-      <img src="SCREENY%20DO%20HOME/Twitter%20Ad%203.png" alt="" draggable="false">
-    </div>
-    <div class="hero-stack-card" data-rot="14" data-ratio="0.5625" style="left:0;top:0;transform:rotate(14deg);z-index:10;">
+    <div class="hero-stack-card" data-rot="14" data-ratio="0.5625" style="left:0;top:0;transform:rotate(14deg);z-index:9;">
       <img src="SCREENY%20DO%20HOME/examples.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="8" data-ratio="1.0" data-scale="0.5" style="left:0;top:0;transform:rotate(8deg);z-index:10;">
+      <img src="SCREENY%20DO%20HOME/Twitter%20Ad%203.png" alt="" draggable="false">
     </div>
   </div>
 
@@ -2413,16 +2413,16 @@ document.addEventListener('keydown', function(e) {
   // [leftPercent, topPercent, rot] — kolejność = kolejność kart w HTML
   // Pozycje wyliczone z opisu 1920×1080: lp = x/1920, tp = y/1080
   const startPositions = [
-    [0.460, 0.315,  -3],  // 02c3d85d Spider-Man — z=1, w prawo, najniższa warstwa
-    [0.635, 0.667,  -5],  // A Holiday Story     — z=2, tył dół-prawo
-    [0.769, 0.444,   3],  // Zrzut 2022 Sōppo    — z=3, +5px prawo
-    [0.805, 0.519,   7],  // Zrzut 2026 WRO CŁAW — z=4, lewy bok = lewy bok Twitter Ad
-    [0.604, 0.200, -10],  // Typografia red WRO  — z=5, w górę
-    [0.500, 0.444,   2],  // Zrzut 2025          — z=6, na miejsce 13.png
-    [0.724, 0.231,   5],  // plakat nh NH         — z=7, na miejsce Zrzut 2025
-    [0.640, 0.444,  -2],  // 13.png ODRA WRO      — z=8, obok (w prawo)
-    [0.630, 0.680,   8],  // Twitter Ad 3         — z=9, w lewo+dół nad examples
-    [0.750, 0.650,  14],  // examples             — z=10, w prawo, wierzch
+    [0.460, 0.315,  -3],  // 02c3d85d Spider-Man — z=1, najniższa warstwa
+    [0.500, 0.480,  -5],  // A Holiday Story     — z=2, w lewo+lekko niżej, w połowie Zrzut 2025
+    [0.820, 0.444,   3],  // Zrzut 2022 Sōppo    — z=3, prawa krawędź za Zrzut 2026
+    [0.640, 0.310,   7],  // Zrzut 2026 WRO CŁAW — z=4, nad obrazek 13.png
+    [0.604, 0.200, -10],  // Typografia red WRO  — z=5
+    [0.500, 0.444,   2],  // Zrzut 2025          — z=6
+    [0.724, 0.231,   5],  // plakat nh NH         — z=7
+    [0.640, 0.444,  -2],  // 13.png ODRA WRO      — z=8
+    [0.750, 0.650,  14],  // examples             — z=9
+    [0.630, 0.680,   8],  // Twitter Ad 3         — z=10, najwyższa warstwa
   ];
 
   function init() {
