@@ -1094,7 +1094,13 @@ footer {
       <span class="line hero-line-3"><span>Designer</span></span>
     </h1>
     <div class="hero-bottom">
-      <p class="hero-tagline" data-i18n="hero-tagline">Grafika, motion design i produkcja filmowa — tworzę spójne identyfikacje wizualne, kampanie i materiały wideo dla marek, które chcą być zapamiętane.</p>
+      <div style="display:flex; flex-direction:column; gap:20px; max-width:420px;">
+        <p class="hero-tagline" data-i18n="hero-tagline">Grafika, motion design i produkcja filmowa — tworzę spójne identyfikacje wizualne, kampanie i materiały wideo dla marek, które chcą być zapamiętane.</p>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
+          <a href="#work" style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-decoration:none; letter-spacing:0.05em;">↓ Zobacz prace</a>
+        </div>
+      </div>
       <span class="hero-scroll" data-i18n="hero-scroll">Scroll</span>
     </div>
   </div>
@@ -1193,21 +1199,41 @@ footer {
       </div>
     </div>
 
-    <!-- Project 4: Large — Eksperymenty wizualne -->
-    <div class="project-card project-card-large reveal" onclick="openGallery('ai')" style="cursor:pointer;">
-      <div class="project-info">
-        <div class="project-tags">
-          <span class="project-tag">Generative</span>
-          <span class="project-tag">Visual</span>
-          <span class="project-tag">Experiments</span>
+    <!-- Project 4 row: Eksperymenty wizualne + Good Taste Agency -->
+    <div class="work-small-grid">
+      <!-- Eksperymenty wizualne -->
+      <div class="project-card reveal" onclick="openGallery('ai')" style="cursor:pointer;">
+        <div class="project-image" style="padding:0; overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20ai%20creations.png" alt="Eksperymenty wizualne" style="width:100%; height:100%; object-fit:cover; display:block;">
         </div>
-        <h3 class="project-name" data-i18n="name-ai">Eksperymenty wizualne</h3>
-        <p class="project-desc" data-i18n="desc-ai">Eksperymenty wizualne i badanie nowych estetyk — z pomocą narzędzi AI jako generatora pomysłów i inspiracji do dalszej pracy projektowej.</p>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Generative</span>
+            <span class="project-tag">Visual</span>
+            <span class="project-tag">Experiments</span>
+          </div>
+          <h3 class="project-name" data-i18n="name-ai">Eksperymenty wizualne</h3>
+          <p class="project-desc" data-i18n="desc-ai">Eksperymenty wizualne i badanie nowych estetyk — z pomocą narzędzi AI jako generatora pomysłów i inspiracji do dalszej pracy projektowej.</p>
+        </div>
+        <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </div>
-      <div class="project-image" style="padding:0; overflow:hidden;">
-        <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20ai%20creations.png" alt="Eksperymenty wizualne" style="width:100%; height:100%; object-fit:cover; display:block;">
+
+      <!-- Good Taste Agency -->
+      <div class="project-card reveal" onclick="openGallery('agencies')" style="cursor:pointer;">
+        <div class="project-image" style="padding:0; overflow:hidden;">
+          <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20prace%20dla%20agencji.jpeg" alt="Good Taste Agency" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Video</span>
+            <span class="project-tag">Motion</span>
+            <span class="project-tag">Agency</span>
+          </div>
+          <h3 class="project-name" data-i18n="name-agencies">Good Taste Agency</h3>
+          <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.</p>
+        </div>
+        <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </div>
-      <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
     </div>
 
     <!-- Project 5: Large — Film & Motion Showreel -->
@@ -1281,11 +1307,30 @@ const PROJECTS = {
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/The Fertile Screscent trailer 1.mp4', caption: 'Strategiczna współpraca z zespołem deweloperów — przygotowanie buildów pod produkcję wideo. Koncepcja kreatywna, reżyseria nagrań, efekty motion, montaż, sound design, napisy, nadzór nad całością procesu do momentu wydania.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/W.A.N.D. Project  Demo Teaser.mp4', caption: 'Koncepcja i reżyseria materiału łączącego nagrania live-action z motion design w stylistyce graficznej gry. Bezpośrednia współpraca z zespołem developerskim przy budowaniu features pod potrzeby produkcji wideo. Nagranie, montaż, animacja, sound design.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/W.A.N.D. Project Game Intro.mp4', caption: 'Stworzenie koncepcji kreatywnej, na bazie której zespół grafików wyprodukował materiały wizualne. Animacja, sound design, montaż, przygotowanie do wydania.' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/CardHunter Adventures Pitch video.mp4', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Release.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/NEW LEVELS.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Frame 63new.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Zrzut ekranu 2026-02-23 o 23.34.11.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/DR_Trailer_Interior NEW01.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Frame 11.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/crescent cup 2v2 tourament winner.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/liveStream1_loc.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/showreel web 2024 bez przejsc short_14_11v2.mp4', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/WAND PAX steam baner.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Zrzut ekranu 2026-02-23 o 23.34.34.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Zrzut ekranu 2026-02-23 o 23.35.30.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/challange.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/samurais logo Wallpaper.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Ad play now.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/A Holiday Story_ Once upon a time, there was Card Hunter_ Adventures.png', caption: '' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/IMG_20211009_170201.jpg', caption: '' },
       {divider: 'Cyrulicy', desc: 'Polski brand kosmetyków i perfum — współpraca przy tworzeniu grafik, wideo UGC, opakowań produktów oraz współtworzenie brandu.'},
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Soppo AI reels.mp4', caption: 'Koncepcja kreatywna i realizacja materiału łączącego nagrania live-action z efektami AI — w tym wirtualny product placement (buteleczka na punkcie Hebe w centrum handlowym). Nagranie, montaż, postprodukcja, wydanie.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy Cherry Bomb.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy French.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' },
-      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy Burboneska.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' }
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy Burboneska.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' },
+      { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Zrzut ekranu 2022-08-15 o 22.40.58.png', caption: '' }
     ]
   },
   vidsy: {
@@ -1350,7 +1395,8 @@ const PROJECTS = {
       { src: 'NOWE HORYZONTY WORKS/1599293693879.jpeg', caption: 'Koncepcja i realizacja kreacji na social media — przeglądy, festiwale, wydarzenia kina Nowe Horyzonty. Budowanie wizualnego języka komunikacji, który działa w feedzie i jednocześnie trzyma poziom marki.' },
       { src: 'NOWE HORYZONTY WORKS/1601811577435.jpeg', caption: 'Koncepcja i realizacja kreacji na social media — przeglądy, festiwale, wydarzenia kina Nowe Horyzonty. Budowanie wizualnego języka komunikacji, który działa w feedzie i jednocześnie trzyma poziom marki.' },
       { src: 'NOWE HORYZONTY WORKS/1602285806106.jpeg', caption: 'Koncepcja i realizacja kreacji na social media — przeglądy, festiwale, wydarzenia kina Nowe Horyzonty. Budowanie wizualnego języka komunikacji, który działa w feedzie i jednocześnie trzyma poziom marki.' },
-      { src: 'NOWE HORYZONTY WORKS/1602551559183.jpeg', caption: 'Zaprojektowanie i wdrożenie kinowego bota repertuarowego na Messengerze — automatyzacja dostępu do repertuaru i informacji festiwalowych bez angażowania obsługi kina. (Projekt wycofany.)' }
+      { src: 'NOWE HORYZONTY WORKS/1602551559183.jpeg', caption: 'Zaprojektowanie i wdrożenie kinowego bota repertuarowego na Messengerze — automatyzacja dostępu do repertuaru i informacji festiwalowych bez angażowania obsługi kina. (Projekt wycofany.)' },
+      { src: 'NOWE HORYZONTY WORKS/Ukraina! plansza ekran.jpg', caption: 'Tworzenie i prowadzenie kreacji graficznych dla kina Nowe Horyzonty we Wrocławiu. Projektowanie w ramach istniejących brandbooków lub budowanie koncepcji wizualnych od zera — z zachowaniem spójności z marką Nowych Horyzontów. Różnorodność formatów: od plakatów przez materiały eventowe po kreacje digitalowe.' }
     ]
   },
   ai: {
@@ -1382,6 +1428,21 @@ const PROJECTS = {
       { src: 'AI VISUAL EXPERIMENTS/hf_20260208_231206_b61a65e3-2da8-4e36-9864-d224d14bf3e8.png', caption: 'Rozwinięcie konceptu wirtualnej influencerki w kierunku luksusowej komercjalizacji — kreacja w stylu high-endowej kampanii Yves Saint Laurent. Testowanie, czy AI-generowana persona jest w stanie udźwignąć estetykę i wiarygodność premium fashion.' },
       { src: 'AI VISUAL EXPERIMENTS/hf_20260208_232920_3f963e73-32ae-48b9-bc31-9269b4ee377e.jpeg', caption: 'Projekt wirtualnej influencerki — budowanie kompletnej persony wizualnej i narracyjnej. Seria fotorealistycznych obrazów opowiadających jej historię w estetyce casualowych zdjęć z iPhone\'a wrzucanych na Instagrama. Detale budujące autentyczność: burger, ćma, lis podchodzący po jedzenie, cieszenie się posiłkiem. Format karuzelowy, gotowy do publikacji jako organiczny content. Badanie granicy między AI a rzeczywistością w kontekście influencer marketingu.' },
       { src: 'AI VISUAL EXPERIMENTS/hf_20260210_135225_d02860d4-5f95-43a7-99be-9fceef4d0383.png', caption: 'Projekt wirtualnej influencerki — budowanie kompletnej persony wizualnej i narracyjnej. Seria fotorealistycznych obrazów opowiadających jej historię w estetyce casualowych zdjęć z iPhone\'a wrzucanych na Instagrama. Detale budujące autentyczność: burger, ćma, lis podchodzący po jedzenie, cieszenie się posiłkiem. Format karuzelowy, gotowy do publikacji jako organiczny content. Badanie granicy między AI a rzeczywistością w kontekście influencer marketingu.' }
+    ]
+  },
+  agencies: {
+    title: 'Good Taste Agency',
+    type: 'video',
+    desc: 'Prace graficzne tworzone dla agencji Good Taste związane z występami muzyków i koncertami. Opracowywałem dla nich koncepcje graficzne, realizowałem montaż wideo wraz z elementami motion design i projektowałem statyczne wersje kreacji. To mały wycinek prac zrealizowanych we współpracy z nimi.',
+    items: [
+      { src: 'Agencies jobs: Prace dla agencji/fan tix.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/Edison - Rojek.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/Letnie - Baranovski.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/pietrucha pion UNDA.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/kensington.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/Slow Up festival.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/Zalewski insastory mniej tla.mp4', caption: '' },
+      { src: 'Agencies jobs: Prace dla agencji/jazzband poziom warszawa.mp4', caption: '' }
     ]
   }
 
@@ -1449,7 +1510,7 @@ function openGallery(key) {
       const itemSrc = typeof item === 'string' ? item : item.src;
       const url = buildUrl(itemSrc);
       const cell = document.createElement('div');
-      const isVideo = project.type === 'video';
+      const isVideo = /\.(mp4|webm|mov)$/i.test(itemSrc);
       if (isVideo) {
         cell.style.cssText = 'overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; min-width:0;';
       } else {
@@ -1457,7 +1518,7 @@ function openGallery(key) {
       }
       cell.onclick = () => openLightbox(key, i);
 
-      if (project.type === 'video') {
+      if (isVideo) {
         const v = document.createElement('video');
         v.src = url;
         v.crossOrigin = 'anonymous';
@@ -1527,7 +1588,8 @@ function updateLightboxMedia() {
 
   const img = document.getElementById('lightboxImg');
   const vid = document.getElementById('lightboxVideo');
-  if (project.type === 'video') {
+  const isVideoItem = /\.(mp4|webm|mov)$/i.test(src);
+  if (isVideoItem) {
     vid.src = url;
     vid.muted = true;
     vid.style.display = 'block';
@@ -1783,7 +1845,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ==========================================
      CTA
      ========================================== -->
-<section class="cta-section">
+<section class="cta-section" id="contact">
   <h2 class="cta-title reveal" data-i18n="cta-title">Stwórzmy coś <em>razem</em></h2>
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz grafika z okiem filmowca i doświadczeniem w druku i digital?</p>
   <div class="cta-buttons reveal">
@@ -1882,6 +1944,8 @@ const TRANSLATIONS = {
     'desc-festivale':'W latach 2014–2019 znaczna większość grafik i materiałów wideo dla tych festiwali i kina NH powstawała przy moim udziale — druk, social media, ekrany, materiały eventowe.',
     'name-ai':       'Eksperymenty wizualne',
     'desc-ai':       'Eksperymenty wizualne i badanie nowych estetyk — z pomocą narzędzi AI jako generatora pomysłów i inspiracji do dalszej pracy projektowej.',
+    'name-agencies': 'Good Taste Agency',
+    'desc-agencies': 'Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.',
     'name-showreel': 'Film & Motion Showreel 2025',
     'desc-showreel': 'Kompilacja prac łączących produkcję filmową z motion design. Od konceptu i reżyserii, przez montaż, po finalną postprodukcję.',
 
@@ -1963,6 +2027,8 @@ const TRANSLATIONS = {
     'desc-festivale':'Years of co-creating the visual language of some of the most important film festivals in Poland.',
     'name-ai':       'Visual Experiments',
     'desc-ai':       'Visual experiments and exploration of new aesthetics — with AI tools as a generator of ideas and inspiration for further design work.',
+    'name-agencies': 'Good Taste Agency',
+    'desc-agencies': 'Video and motion design for Good Taste music agency — visuals for musician performances and concert events. Editing, motion design, delivery.',
     'name-showreel': 'Film & Motion Showreel 2025',
     'desc-showreel': 'A compilation of works combining film production with motion design. From concept and direction, through editing, to final post-production.',
 
@@ -2105,6 +2171,13 @@ function applyLang(lang) {
     cvBtn.href = lang === 'en' ? 'https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/CV/Mateusz%20Rychlik%20%E2%80%94%20CV_EN.pdf' : 'https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/CV/Mateusz%20Rychlik%20%E2%80%94%20CV_PL.pdf';
     const btnLabel = cvBtn.querySelector('[data-i18n-cv-btn]');
     if (btnLabel) btnLabel.textContent = lang === 'en' ? 'Download PDF' : 'Pobierz PDF';
+  }
+
+  if (typeof PROJECTS !== 'undefined' && PROJECTS.agencies) {
+    PROJECTS.agencies.title = lang === 'en' ? 'Agency Jobs' : 'Prace dla agencji';
+    PROJECTS.agencies.desc  = lang === 'en'
+      ? 'Graphic and video work created for Good Taste agency — music videos, concert visuals and digital campaigns.'
+      : 'Prace graficzne tworzone dla agencji Good Taste — teledyski, oprawa koncertów i kampanie digitalowe.';
   }
 }
 
