@@ -6,7 +6,6 @@
 <title>Mateusz Rychlik — Graphic &amp; Motion Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <style>
 /* ============================================
    DESIGN SYSTEM
@@ -189,17 +188,6 @@ nav {
   background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(255,77,0,0.05) 0%, transparent 70%);
 }
 
-/* Physics canvas — full hero, Matter.js handles all pointer events */
-#physicsCanvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  cursor: default;
-  touch-action: pan-y; /* allow vertical scroll on touch devices */
-}
-
 .hero-left {
   position: relative;
   z-index: 4;
@@ -207,7 +195,6 @@ nav {
   flex-direction: column;
   gap: 24px;
   max-width: 52%;
-  pointer-events: none;
 }
 
 .hero-title {
@@ -283,14 +270,10 @@ nav {
    HERO PHOTO STACK
    ============================================ */
 .hero-stack {
-  position: relative;
-  grid-column: 2;
-  grid-row: 1 / 3;
-  align-self: center;
-  width: 420px;
-  height: 280px;
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  margin-bottom: 20px;
+  pointer-events: none;
 }
 
 .hero-stack-card {
@@ -298,18 +281,18 @@ nav {
   border-radius: 4px;
   overflow: hidden;
   cursor: grab;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  background: var(--bg-elevated);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
   transition: box-shadow 0.2s ease, filter 0.2s ease;
   will-change: transform;
   user-select: none;
   -webkit-user-select: none;
+  pointer-events: auto;
 }
 
 .hero-stack-card.dragging {
   cursor: grabbing;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
-  filter: brightness(1.02);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+  filter: brightness(1.05);
   transition: none;
 }
 
@@ -319,8 +302,12 @@ nav {
   object-fit: cover;
   display: block;
   pointer-events: none;
+  filter: brightness(0.9);
   transition: filter 0.3s ease;
-  draggable: false;
+}
+
+.hero-stack-card:hover img {
+  filter: brightness(1);
 }
 
 /* ============================================
@@ -355,16 +342,14 @@ nav {
 .hero-mobile-stack-card {
   position: absolute;
   width: 46vw;
-  height: calc(46vw * 9 / 16);
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 
 .hero-mobile-stack-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -1052,8 +1037,49 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
 
-  <!-- Physics canvas — Matter.js -->
-  <canvas id="physicsCanvas"></canvas>
+  <!-- Photo stack — drag & drop na stole roboczym -->
+  <div id="heroStack">
+    <div class="hero-stack-card" data-rot="-12" data-ratio="1.426" style="left:0;top:0;transform:rotate(-12deg);z-index:1;">
+      <img src="SCREENY%20DO%20HOME/hf_20260223_200445_76961792-80ce-4ee8-9a3f-9947a1391b20%20plakat.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="8" data-ratio="1.491" style="left:20px;top:-20px;transform:rotate(8deg);z-index:2;">
+      <img src="SCREENY%20DO%20HOME/02c3d85d-48f5-4b1e-bfc3-745c5ceca4b8.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="15" data-ratio="1.471" style="left:-10px;top:15px;transform:rotate(15deg);z-index:3;">
+      <img src="SCREENY%20DO%20HOME/13.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="-6" data-ratio="1.0" style="left:15px;top:5px;transform:rotate(-6deg);z-index:4;">
+      <img src="SCREENY%20DO%20HOME/Twitter%20Ad%203.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="-4" data-ratio="1.412" style="left:-5px;top:-5px;transform:rotate(-4deg);z-index:5;">
+      <img src="SCREENY%20DO%20HOME/Zrzut%20ekranu%202025-04-4%20o%2021.02.44.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="20" data-ratio="0.562" style="left:10px;top:15px;transform:rotate(20deg);z-index:6;">
+      <img src="SCREENY%20DO%20HOME/Zrzut%20ekranu%202026-02-23%20o%2023.34.11.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="6" data-ratio="0.5625" style="left:-8px;top:8px;transform:rotate(6deg);z-index:7;">
+      <img src="SCREENY%20DO%20HOME/examples.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="-18" data-ratio="1.339" style="left:5px;top:-10px;transform:rotate(-18deg);z-index:8;">
+      <img src="SCREENY%20DO%20HOME/hf_20260223_190052_0a8d7285-4e19-46b7-947f-4db9aa7c2a0d.png" alt="" draggable="false">
+    </div>
+  </div>
+
+  <!-- Mobile static stack — tylko na małych ekranach -->
+  <div class="hero-mobile-stack">
+    <div class="hero-mobile-stack-card" style="left:-8vw;top:80px;transform:rotate(-16deg);z-index:1;">
+      <img src="SCREENY%20DO%20HOME/hf_20260223_200445_76961792-80ce-4ee8-9a3f-9947a1391b20%20plakat.png" alt="">
+    </div>
+    <div class="hero-mobile-stack-card" style="left:44vw;top:60px;transform:rotate(13deg);z-index:2;">
+      <img src="SCREENY%20DO%20HOME/13.png" alt="">
+    </div>
+    <div class="hero-mobile-stack-card" style="left:5vw;top:150px;transform:rotate(-8deg);z-index:3;">
+      <img src="SCREENY%20DO%20HOME/Twitter%20Ad%203.png" alt="">
+    </div>
+    <div class="hero-mobile-stack-card" style="left:50vw;top:160px;transform:rotate(11deg);z-index:4;">
+      <img src="SCREENY%20DO%20HOME/Zrzut%20ekranu%202026-02-23%20o%2023.34.11.png" alt="">
+    </div>
+  </div>
 
   <div class="hero-left">
     <h1 class="hero-title">
@@ -2370,275 +2396,194 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ============================================
-//   MATTER.JS PHYSICS HERO
+//   HERO PHOTO STACK — drag & drop
 // ============================================
-console.log('[physics] IIFE reached, Matter=', typeof Matter);
 (function() {
-  console.log('[physics] IIFE executing');
 
-  // Matter.js loaded via CDN in <head> — see script tag above
-  // Artefacts: placeholders for real project work (poster, flyer, tablet, phone, etc.)
-  const ARTIFACTS = [
-    { type: 'poster',   label: 'Plakat\nNowe Horyzonty',  w: 135, h: 192, color: '#1A1410', tx: '#F7F2EB', rot: -8,  thickness: 5,  imgSrc: 'SCREENY%20DO%20HOME/hf_20260223_200445_76961792-80ce-4ee8-9a3f-9947a1391b20%20plakat.png' },
-    { type: 'flyer',    label: 'Ulotka\nFestiwal',        w: 120, h: 85,  color: '#FF4D00', tx: '#FFFFFF', rot: 5,   thickness: 4  },
-    { type: 'phone',    label: 'Vidsy\nReel',             w: 65,  h: 115, color: '#2C2420', tx: '#F7F2EB', rot: -12, thickness: 10 },
-    { type: 'cover',    label: 'Okładka\ngry',            w: 100, h: 130, color: '#5C3D1E', tx: '#F7F2EB', rot: 7,   thickness: 12 },
-    { type: 'tablet',   label: 'Motion\nDesign',          w: 130, h: 95,  color: '#EDE8DF', tx: '#1A1410', rot: -4,  thickness: 9  },
-    { type: 'magazine', label: 'Cyrulicy\nBrand',         w: 95,  h: 125, color: '#F7F2EB', tx: '#1A1410', rot: 10,  thickness: 8  },
-    { type: 'book',     label: 'Komiks\nIP',              w: 73,  h: 104, color: '#1a1a2e', tx: '#F7F2EB', rot: -6,  thickness: 22, imgSrc: 'SCREENY%20DO%20HOME/02c3d85d-48f5-4b1e-bfc3-745c5ceca4b8.png' },
-    { type: 'card',     label: 'DTP\nPrint',              w: 110, h: 75,  color: '#DDD6CC', tx: '#1A1410', rot: 15,  thickness: 3  },
+  const hero  = document.querySelector('.hero');
+  const stack = document.getElementById('heroStack');
+  const cards = Array.from(document.querySelectorAll('.hero-stack-card')).filter(c => c.style.display !== 'none');
+  let topZ    = 10;
+  let dragging = null;
+  let startMouseX, startMouseY, startLeft, startTop;
+  let wiggleActive = false;
+  let wiggleTimers = [];
+
+  // [leftPercent, topPercent, rot]
+  const startPositions = [
+    [0.76, 0.12, -12],  // plakat
+    [0.56, 0.22,   8],  // comic
+    [0.84, 0.45,  15],  // 13.png
+    [0.63, 0.58,  -6],  // Twitter Ad
+    [0.46, 0.38,  -4],  // Zrzut 2025
+    [0.71, 0.74,  20],  // Zrzut 2026
+    [0.51, 0.72,   6],  // examples
+    [0.88, 0.24, -18],  // hf...0a8d7285
   ];
 
-  // Preload images declared in artifacts (img.complete checked each frame in drawCard)
-  ARTIFACTS.forEach(art => {
-    if (art.imgSrc) {
-      const img = new Image();
-      img.src = art.imgSrc;
-      art.img = img;
-    }
-  });
+  function init() {
+    const W     = hero.offsetWidth;
+    const H     = hero.offsetHeight;
+    const cardW = Math.round(W * 0.20);
 
-  // Scale artifacts to % of hero width (right half)
-  const SCALE = 1.7;
+    cards.forEach((card, i) => {
+      const [lp, tp, rot] = startPositions[i] || [0.5 + Math.random() * 0.3, Math.random() * 0.7, (Math.random() - 0.5) * 30];
+      const ratio = parseFloat(card.dataset.ratio) || (9 / 16);
+      const cardH = Math.round(cardW * ratio);
+      const left  = lp * W - cardW / 2;
+      const top   = tp * H - cardH / 2;
 
-  function initPhysics() {
-    console.log('[physics] initPhysics() called');
-    const { Engine, Bodies, Body, Events, Mouse, MouseConstraint, Composite } = Matter;
-
-    const heroEl = document.querySelector('.hero');
-    const canvas = document.getElementById('physicsCanvas');
-    const W = heroEl.offsetWidth;
-    const H = heroEl.offsetHeight;
-    const DPR = window.devicePixelRatio || 1;
-
-    // Set canvas internal resolution to CSS size (no DPR scaling — physics coords = CSS px)
-    canvas.width  = W;
-    canvas.height = H;
-    canvas.style.width  = W + 'px';
-    canvas.style.height = H + 'px';
-
-    const ctx = canvas.getContext('2d');
-
-    // ZERO GRAVITY — obiekty zawieszają się w powietrzu, fizyka działa między nimi
-    const engine = Engine.create({
-      gravity: { x: 0, y: 0 },
-      positionIterations: 10,  // domyślnie 6 — więcej = dokładniejsze kolizje
-      velocityIterations: 8,   // domyślnie 4 — więcej = mniej glitchowania przy styku
+      hero.appendChild(card);
+      card.style.position  = 'absolute';
+      card.style.width     = cardW + 'px';
+      card.style.height    = cardH + 'px';
+      card.style.left      = left + 'px';
+      card.style.top       = top  + 'px';
+      card.style.transform = `rotate(${rot}deg)`;
+      card.style.margin    = '0';
+      card.dataset.rot     = rot;
     });
 
-    // Walls: 4 ściany trzymające obiekty w prawej połowie hero (żeby nie uciekały)
-    const wo = { isStatic: true, friction: 0.15, restitution: 0.1 }; // ściany też miękkie
-    Composite.add(engine.world, [
-      Bodies.rectangle(W / 2,  H + 25,  W * 2, 50,   wo),  // dół
-      Bodies.rectangle(W / 2,  -25,     W * 2, 50,   wo),  // góra
-      Bodies.rectangle(W + 25, H / 2,   50,    H * 2, wo), // prawa ściana
-      Bodies.rectangle(-25,    H / 2,   50,    H * 2, wo), // lewa krawędź canvas
-    ]);
-
-    // Create physics bodies — spawn rozłożone po prawej połowie, z marginesem od krawędzi
-    const margin  = 80;
-    const spawnX0 = W * 0.52 + margin; // spawn zaczyna się po prawej stronie tekstu
-    const spawnX1 = W - margin;
-    const spawnY0 = margin;
-    const spawnY1 = H - margin;
-    const cols = 3;
-    const rows = Math.ceil(ARTIFACTS.length / cols);
-    const bodies = ARTIFACTS.map((art, i) => {
-      const col = i % cols;
-      const row = Math.floor(i / cols);
-      const x = spawnX0 + (spawnX1 - spawnX0) * (col + 0.5) / cols + (Math.random() - 0.5) * 30;
-      const y = spawnY0 + (spawnY1 - spawnY0) * (row + 0.5) / rows      + (Math.random() - 0.5) * 30;
-      const body = Bodies.rectangle(x, y, art.w * SCALE, art.h * SCALE, {
-        restitution: 0.15,   // łagodne odbicie — energia się przenosi, ale bez wystrzeliwania
-        friction:    0.15,
-        frictionAir: 0.010,  // jak woda — obiekt zwalnia płynnie przez ~3s
-        density:     0.002,
-        angle:       art.rot * Math.PI / 180,
-      });
-      // Delikatny kick startowy
-      Body.setVelocity(body, {
-        x: (Math.random() - 0.5) * 0.4,
-        y: (Math.random() - 0.5) * 0.4,
-      });
-      body._art = art;
-      return body;
-    });
-    Composite.add(engine.world, bodies);
-
-    // Mouse drag
-    const mouse = Mouse.create(canvas);
-    const mc = MouseConstraint.create(engine, {
-      mouse,
-      constraint: { stiffness: 0.05, damping: 0.3, render: { visible: false } }
-    }); // niski stiffness + damping = płynne, wodniste ciągnięcie
-    Composite.add(engine.world, mc);
-
-    // FIX SCROLL: Matter.js 0.19.0 rejestruje mouse.mousewheel (nie wheelHandler!)
-    // z { passive: false } + preventDefault() — blokuje scroll strony.
-    // Usuwamy go i dodajemy pasywny zamiennik zachowujący wheelDelta dla Matter.js.
-    canvas.removeEventListener('mousewheel', mouse.mousewheel);
-    canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel);
-    canvas.addEventListener('wheel', (e) => {
-      mouse.wheelDelta = Math.max(-1, Math.min(1, e.deltaY > 0 ? 1 : -1));
-    }, { passive: true }); // passive: true = browser nie blokuje scrolla
-
-    // Brak dodatkowego impulsu na release — Matter.js automatycznie
-    // nadaje obiektowi velocity z prędkości myszy w momencie puszczenia.
-
-    // Draw a single artifact card (flat)
-    function drawCard(body, art) {
-      ctx.save();
-      ctx.translate(body.position.x, body.position.y);
-      ctx.rotate(body.angle);
-
-      const hw = art.w * SCALE / 2;
-      const hh = art.h * SCALE / 2;
-      const r  = 10;
-
-      if (art.img && art.img.complete && art.img.naturalWidth > 0) {
-        // Real PNG — draw with shadow, clipped to rounded rect
-        ctx.shadowColor    = 'rgba(26,20,16,0.28)';
-        ctx.shadowBlur     = 28;
-        ctx.shadowOffsetX  = 3;
-        ctx.shadowOffsetY  = 10;
-        // Draw fill first so shadow appears under the image
-        ctx.beginPath();
-        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
-        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
-        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
-        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
-        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
-        ctx.fillStyle = art.color;
-        ctx.fill();
-        ctx.shadowColor = 'transparent';
-        // Clip and draw PNG
-        ctx.beginPath();
-        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
-        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
-        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
-        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
-        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
-        ctx.clip();
-        ctx.drawImage(art.img, -hw, -hh, hw * 2, hh * 2);
-
-      } else {
-        // Placeholder: rounded rect + color + label
-        ctx.shadowColor    = 'rgba(26,20,16,0.22)';
-        ctx.shadowBlur     = 24;
-        ctx.shadowOffsetX  = 3;
-        ctx.shadowOffsetY  = 8;
-        ctx.beginPath();
-        ctx.moveTo(-hw + r, -hh); ctx.lineTo(hw - r, -hh);
-        ctx.arcTo(hw, -hh, hw, -hh + r, r); ctx.lineTo(hw, hh - r);
-        ctx.arcTo(hw, hh, hw - r, hh, r); ctx.lineTo(-hw + r, hh);
-        ctx.arcTo(-hw, hh, -hw, hh - r, r); ctx.lineTo(-hw, -hh + r);
-        ctx.arcTo(-hw, -hh, -hw + r, -hh, r); ctx.closePath();
-        ctx.fillStyle = art.color;
-        ctx.fill();
-        ctx.shadowColor = 'transparent';
-
-        // Border on light cards
-        const lightCards = ['#F7F2EB', '#EDE8DF', '#DDD6CC'];
-        if (lightCards.includes(art.color)) {
-          ctx.strokeStyle = 'rgba(26,20,16,0.12)';
-          ctx.lineWidth   = 1;
-          ctx.stroke();
-        }
-
-        // Label
-        ctx.fillStyle    = art.tx;
-        ctx.font         = `600 ${Math.round(11 * SCALE)}px Inter, sans-serif`;
-        ctx.textAlign    = 'center';
-        ctx.textBaseline = 'middle';
-        const lines = art.label.split('\n');
-        const lh    = 15 * SCALE;
-        lines.forEach((line, i) => {
-          ctx.fillText(line, 0, (i - (lines.length - 1) / 2) * lh);
-        });
-
-        // White dot on orange card
-        if (art.color === '#FF4D00') {
-          ctx.fillStyle = 'rgba(255,255,255,0.8)';
-          ctx.beginPath();
-          ctx.arc(hw - 14, -hh + 14, 5, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      ctx.restore();
-    }
-
-    // Cursor + velocity cap — żadne ciało nie przekracza 3px/frame
-    const MAX_SPEED = 3;
-    const MAX_ANG   = 0.05;
-    canvas.style.cursor = 'default';
-    Events.on(engine, 'beforeUpdate', function() {
-      // Kursor
-      const mp = mouse.position;
-      let hovering = false;
-      bodies.forEach(body => {
-        if (Matter.Bounds.contains(body.bounds, mp)) hovering = true;
-      });
-      canvas.style.cursor = mc.body ? 'grabbing' : hovering ? 'grab' : 'default';
-
-      // Limit prędkości — wodnisty, spokojny ruch
-      bodies.forEach(body => {
-        const v     = body.velocity;
-        const speed = Math.sqrt(v.x * v.x + v.y * v.y);
-        if (speed > MAX_SPEED) {
-          Body.setVelocity(body, { x: v.x / speed * MAX_SPEED, y: v.y / speed * MAX_SPEED });
-        }
-        if (Math.abs(body.angularVelocity) > MAX_ANG) {
-          Body.setAngularVelocity(body, Math.sign(body.angularVelocity) * MAX_ANG);
-        }
-      });
-    });
-
-    // LEVITATION: ciągłe sinusoidalne siły — organiczne dryfowanie w powietrzu
-    // Każda karta ma unikalną fazę → różne trajektorie, nie synchronizują się
-    let floatTick = 0;
-    const floatPhase = bodies.map((_, i) => i * 1.618); // złoty podział = równomierne rozłożenie faz
-
-    // Step physics and draw — called by RAF
-    function tick() {
-      floatTick++;
-      Engine.update(engine, 16.667);
-
-      bodies.forEach((body, i) => {
-        if (mc.body === body) return; // nie ruszaj przeciąganego
-
-        const p = floatPhase[i];
-        const t = floatTick;
-
-        // Lissajous-like drift: różne częstotliwości X i Y → niepowtarzalna pętla
-        const fx = Math.sin(t * 0.011 + p * 2.1) * 0.000035;
-        const fy = Math.cos(t * 0.016 + p * 1.7) * 0.000030;
-        Body.applyForce(body, body.position, { x: fx, y: fy });
-
-        // Subtelne kołysanie kątowe
-        const wobble = Math.sin(t * 0.007 + p * 2.6) * 0.00008;
-        Body.setAngularVelocity(body, body.angularVelocity + wobble);
-      });
-
-      ctx.clearRect(0, 0, W, H);
-      bodies.forEach(body => drawCard(body, body._art));
-    }
-
-    // RAF loop — smooth 60fps when tab is visible
-    function rafLoop(ts) {
-      tick();
-      requestAnimationFrame(rafLoop);
-    }
-    requestAnimationFrame(rafLoop);
-
-    // Draw once immediately (visible even before first RAF fires)
-    Engine.update(engine, 0);
-    ctx.clearRect(0, 0, W, H);
-    bodies.forEach(body => drawCard(body, body._art));
+    stack.style.display = 'none';
   }
 
-  // Matter.js loaded synchronously in <head>, DOM ready at this point (script is at end of body)
-  initPhysics();
+  function onResize() {
+    stopWiggle();
+    const W     = hero.offsetWidth;
+    const H     = hero.offsetHeight;
+    const cardW = Math.round(W * 0.20);
+
+    cards.forEach((card, i) => {
+      const [lp, tp] = startPositions[i] || [0.5, 0.5];
+      const ratio = parseFloat(card.dataset.ratio) || (9 / 16);
+      const cardH = Math.round(cardW * ratio);
+      card.style.width  = cardW + 'px';
+      card.style.height = cardH + 'px';
+      card.style.left   = (lp * W - cardW / 2) + 'px';
+      card.style.top    = (tp * H - cardH / 2) + 'px';
+    });
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(onResize, 150);
+  });
+
+  function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
+
+  function startWiggle() {
+    if (wiggleActive) return;
+    wiggleActive = true;
+    cards.forEach((card, i) => {
+      function jiggle() {
+        if (!wiggleActive || dragging === card) return;
+        const rot = parseFloat(card.dataset.rot) || 0;
+        const dx  = (Math.random() - 0.5) * 6;
+        const dy  = (Math.random() - 0.5) * 6;
+        const dr  = (Math.random() - 0.5) * 4;
+        card.style.transition = 'transform 0.6s ease, left 0.6s ease, top 0.6s ease';
+        card.style.left       = (parseFloat(card.style.left) + dx) + 'px';
+        card.style.top        = (parseFloat(card.style.top)  + dy) + 'px';
+        card.style.transform  = `rotate(${rot + dr}deg)`;
+        wiggleTimers[i] = setTimeout(jiggle, 600 + Math.random() * 800);
+      }
+      wiggleTimers[i] = setTimeout(jiggle, i * 120);
+    });
+  }
+
+  function stopWiggle() {
+    wiggleActive = false;
+    wiggleTimers.forEach(t => clearTimeout(t));
+    wiggleTimers = [];
+    cards.forEach(card => {
+      if (card === dragging) return;
+      const rot = parseFloat(card.dataset.rot) || 0;
+      card.style.transition = 'transform 0.4s ease';
+      card.style.transform  = `rotate(${rot}deg)`;
+    });
+  }
+
+  hero.addEventListener('mouseenter', startWiggle);
+  hero.addEventListener('mouseleave', stopWiggle);
+
+  function onMouseDown(e) {
+    if (e.button !== 0) return;
+    const card = e.currentTarget;
+    dragging = card;
+    topZ++;
+    card.style.zIndex     = topZ;
+    card.style.transition = 'none';
+    card.classList.add('dragging');
+    startMouseX = e.clientX;
+    startMouseY = e.clientY;
+    startLeft   = parseFloat(card.style.left);
+    startTop    = parseFloat(card.style.top);
+    e.preventDefault();
+  }
+
+  function onMouseMove(e) {
+    if (!dragging) return;
+    const heroRect = hero.getBoundingClientRect();
+    const dx    = e.clientX - startMouseX;
+    const dy    = e.clientY - startMouseY;
+    const cardW = dragging.offsetWidth;
+    const cardH = dragging.offsetHeight;
+    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, heroRect.width  - cardW * 0.7) + 'px';
+    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, heroRect.height - cardH * 0.7) + 'px';
+  }
+
+  function onMouseUp() {
+    if (!dragging) return;
+    dragging.classList.remove('dragging');
+    dragging = null;
+  }
+
+  function onTouchStart(e) {
+    const touch = e.touches[0];
+    const card  = e.currentTarget;
+    dragging    = card;
+    topZ++;
+    card.style.zIndex     = topZ;
+    card.style.transition = 'none';
+    card.classList.add('dragging');
+    startMouseX = touch.clientX;
+    startMouseY = touch.clientY;
+    startLeft   = parseFloat(card.style.left);
+    startTop    = parseFloat(card.style.top);
+    e.preventDefault();
+  }
+
+  function onTouchMove(e) {
+    if (!dragging) return;
+    const touch    = e.touches[0];
+    const heroRect = hero.getBoundingClientRect();
+    const dx    = touch.clientX - startMouseX;
+    const dy    = touch.clientY - startMouseY;
+    const cardW = dragging.offsetWidth;
+    const cardH = dragging.offsetHeight;
+    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, heroRect.width  - cardW * 0.7) + 'px';
+    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, heroRect.height - cardH * 0.7) + 'px';
+    e.preventDefault();
+  }
+
+  function onTouchEnd() {
+    if (!dragging) return;
+    dragging.classList.remove('dragging');
+    dragging = null;
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('mousedown',  onMouseDown);
+    card.addEventListener('touchstart', onTouchStart, { passive: false });
+    card.addEventListener('touchmove',  onTouchMove,  { passive: false });
+    card.addEventListener('touchend',   onTouchEnd);
+  });
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup',   onMouseUp);
+
+  window.addEventListener('load', init);
 })();
 
 </script>
