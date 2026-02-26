@@ -492,6 +492,14 @@ section {
   max-width: 480px;
 }
 
+.project-tools-line {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
 .project-arrow {
   position: absolute;
   top: 24px;
@@ -519,7 +527,15 @@ section {
   transition: stroke 0.3s var(--ease);
 }
 
-.project-card:hover .project-arrow {
+.project-card:hover .project-tools-line {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.project-arrow {
   background: var(--accent);
   border-color: var(--accent);
   color: white;
@@ -1099,7 +1115,7 @@ footer {
         <p class="hero-tagline" data-i18n="hero-tagline">Identyfikacje wizualne, kampanie i materiały DTP — od projektu po gotowy plik, dla marek które chcą być zapamiętane.</p>
         <div style="display:flex; gap:12px; align-items:center;">
           <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
-          <a href="#work" style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-decoration:none; letter-spacing:0.05em;">↓ Zobacz prace</a>
+          <a href="#work" data-i18n="hero-see-work" style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-decoration:none; letter-spacing:0.05em;">↓ Zobacz prace</a>
         </div>
       </div>
       <span class="hero-scroll" data-i18n="hero-scroll">Scroll</span>
@@ -1161,6 +1177,7 @@ footer {
           <span class="project-tag">Motion</span>
         </div>
         <h3 class="project-name">The Knights of U &amp; Cyrulicy</h3>
+        <p class="project-tools-line">Premiere Pro · After Effects · AI · Illustrator · Photoshop</p>
         <p class="project-desc" data-i18n="desc-knights">Produkcja wideo — trailery dla studia gamingowego i materiały dla brandu kosmetycznego.</p>
       </div>
       <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1178,6 +1195,7 @@ footer {
             <span class="project-tag">Motion</span>
           </div>
           <h3 class="project-name" data-i18n="name-vidsy">Kampanie Vidsy</h3>
+          <p class="project-tools-line">After Effects · Premiere Pro</p>
           <p class="project-desc" data-i18n="desc-vidsy">Materiały wizualne i motion do kampanii Warcraft, Harry Potter, Gra o Tron, Assassin's Creed i wiele innych</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1194,6 +1212,7 @@ footer {
             <span class="project-tag">Branding</span>
           </div>
           <h3 class="project-name" data-i18n="name-festivale">Nowe Horyzonty &amp; American Film Festival</h3>
+          <p class="project-tools-line">Premiere Pro · After Effects · Figma · Illustrator · Photoshop</p>
           <p class="project-desc" data-i18n="desc-festivale">W latach 2014–2019 tworzyłem niemal całość produkcji wizualnej festiwali Nowe Horyzonty i American Film Festival — plakaty, DTP i materiały drukowane (ulotki, programy, bannery, magazyny), social media, grafiki eventowe i animacje.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1214,6 +1233,7 @@ footer {
             <span class="project-tag">Experiments</span>
           </div>
           <h3 class="project-name" data-i18n="name-ai">Eksperymenty wizualne</h3>
+          <p class="project-tools-line">Nano Banana Pro · Higgsfield · Flux · C-Dream · Topaz · Bestmintony</p>
           <p class="project-desc" data-i18n="desc-ai">Eksperymenty wizualne i badanie nowych estetyk — z pomocą narzędzi AI jako generatora pomysłów i inspiracji do dalszej pracy projektowej.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1231,6 +1251,7 @@ footer {
             <span class="project-tag">Agency</span>
           </div>
           <h3 class="project-name" data-i18n="name-agencies">Good Taste Agency</h3>
+          <p class="project-tools-line">Premiere Pro · After Effects · Illustrator · Figma · Photoshop</p>
           <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1249,6 +1270,7 @@ footer {
           <span class="project-tag">Showreel</span>
         </div>
         <h3 class="project-name" data-i18n="name-showreel">Film &amp; Motion Showreel 2025</h3>
+        <p class="project-tools-line">Kling · Higgsfield · Premiere Pro · Nano Banana Pro</p>
         <p class="project-desc" data-i18n="desc-showreel">Kompilacja prac łączących produkcję filmową z motion design. Od konceptu i reżyserii, przez montaż, po finalną postprodukcję.</p>
       </div>
       <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1676,7 +1698,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="about-content reveal">
       <h3 data-i18n="about-h3">Jestem grafikiem, który <em>rozumie obraz</em></h3>
       <p class="about-text" data-i18n="about-p1">Przez lata tworzyłem identyfikacje wizualne, kampanie i materiały DTP dla festiwali filmowych i globalnych marek — od projektu koncepcyjnego po finalne pliki produkcyjne.</p>
-      <p class="about-text" data-i18n="about-p2">Mam filmowo-fotograficzne wyczucie obrazu — studiowałem na Wydziale Operatorskim Szkoły Filmowej. To przekłada się na jakość każdej grafiki, nie tylko wideo.</p>
+      <p class="about-text" data-i18n="about-p2">Mam filmowo-fotograficzne wyczucie obrazu — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. To przekłada się na jakość każdej grafiki, nie tylko wideo.</p>
       <p class="about-text" data-i18n="about-p3">AI traktuję jako narzędzie wspomagające workflow — generator pomysłów, przyspieszacz iteracji. Ale żaden algorytm nie zastąpi świadomości wizualnej i doświadczenia w pracy z klientem.</p>
 
       <div class="about-stats">
@@ -1817,7 +1839,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="tool-card reveal">
       <div class="tool-icon">🎬</div>
-      <div class="tool-name">After Effects / Premiere Pro</div>
+      <div class="tool-name">After Effects / Premiere Pro / DaVinci</div>
       <div class="tool-cat">Motion &amp; Editing</div>
     </div>
     <div class="tool-card reveal">
@@ -1851,6 +1873,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz grafika z okiem filmowca i doświadczeniem w druku i digital?</p>
   <div class="cta-buttons reveal">
     <button class="btn btn-primary" onclick="copyEmail()" data-i18n="cta-btn">Napisz do mnie</button>
+    <button class="btn btn-secondary" onclick="openGallery('showreel')" data-i18n="cta-showreel">▶ Zobacz Showreel</button>
   </div>
   <div id="emailCopied" style="margin-top:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:2px; color:var(--accent); opacity:0; transition:opacity 0.3s;"></div>
 </section>
@@ -1860,7 +1883,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================== -->
 <footer>
   <span class="footer-name">Mateusz Rychlik</span>
-  <span class="footer-copy">©2025 — Graphic &amp; Motion Designer</span>
+  <span class="footer-copy">©2026 — Graphic &amp; Motion Designer</span>
   <div class="footer-links">
     <a href="#" onclick="copyEmail(); return false;">Email</a>
     <a href="#">YouTube</a>
@@ -1954,7 +1977,7 @@ const TRANSLATIONS = {
     'about-label':  '[ 02 — About ]',
     'about-h3':     'Jestem grafikiem, który <em>rozumie obraz</em>',
     'about-p1':     'Przez lata tworzyłem identyfikacje wizualne, kampanie i materiały DTP dla festiwali filmowych i globalnych marek — od projektu koncepcyjnego po finalne pliki produkcyjne.',
-    'about-p2':     'Mam filmowo-fotograficzne wyczucie obrazu — studiowałem na Wydziale Operatorskim Szkoły Filmowej. To przekłada się na jakość każdej grafiki, nie tylko wideo.',
+    'about-p2':     'Mam filmowo-fotograficzne wyczucie obrazu — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. To przekłada się na jakość każdej grafiki, nie tylko wideo.',
     'about-p3':     'AI traktuję jako narzędzie wspomagające workflow — generator pomysłów, przyspieszacz iteracji. Ale żaden algorytm nie zastąpi świadomości wizualnej i doświadczenia w pracy z klientem.',
     'stat-exp':     'Lat doświadczenia',
     'stat-brands':  'Globalnych marek',
@@ -2000,6 +2023,13 @@ const TRANSLATIONS = {
     'cta-title': 'Stwórzmy coś <em>razem</em>',
     'cta-sub':   'Szukasz grafika z okiem filmowca i doświadczeniem w druku i digital?',
     'cta-btn':   'Napisz do mnie',
+    'hero-see-work': '↓ Zobacz prace',
+    'cta-showreel': '▶ Zobacz Showreel',
+    'cv-skills-heading': 'Umiejętności',
+    'cv-skills-list': '<li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik, identyfikacji wizualnych i ilustracji 2D/motion</li><li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja</li><li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa, Illustratora, After Effects, Premiere Pro oraz Figma</li><li>Doświadczenie w DTP i przygotowaniu do druku (InDesign, CMYK, preflight)</li><li>Biegłe poruszanie się w ekosystemie AI — generowanie wideo i obrazów (Higgsfield, Kling, Nanobanana), wsparcie workflow (Claude, Gemini, ChatGPT)</li>',
+    'blob-label': 'CV / Portfolio',
+    'cv-about-title': 'O mnie',
+    'cv-about-body': '<p>Jestem grafikiem i motion designerem z ponad 10-letnim doświadczeniem w tworzeniu identyfikacji wizualnych, kampanii i materiałów wideo dla globalnych marek i festiwali filmowych.</p><p>Mam filmowo-fotograficzne wyczucie obrazu — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji. To fundament każdego projektu, który tworzę — nie tylko wideo.</p><p>Przez lata tworzyłem niemal całość produkcji wizualnej festiwali Nowe Horyzonty i American Film Festival — plakaty, DTP, materiały drukowane, social media. Pracowałem przy komunikacji wizualnej dla Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, HP, Philips, Maybelline New York i La Roche-Posay.</p><p>Rozumiem cały cykl produkcji: od koncepcji i projektu graficznego, przez DTP i przygotowanie do druku, po finalną realizację wideo i motion. AI traktuję jako narzędzie wspomagające — generator pomysłów i przyspieszacz iteracji, nie zastępstwo świadomości wizualnej.</p><p>Szukam miejsca, gdzie ceni się zarówno warsztat techniczny, jak i myślenie wizualne — i gdzie mogę wnieść jedno i drugie.</p>',
   },
 
   en: {
@@ -2037,7 +2067,7 @@ const TRANSLATIONS = {
     'about-label':  '[ 02 — About ]',
     'about-h3':     'I am a designer who <em>understands the image</em>',
     'about-p1':     'Over the years I have created visual identities, campaigns and DTP materials for film festivals and global brands — from initial concept to production-ready files.',
-    'about-p2':     'I have a cinematic-photographic sensibility for the image — I studied at the Cinematography Department of Film School. This translates into the quality of every design, not just video.',
+    'about-p2':     'My visual sensibility was shaped — among other things — by studies at the Cinematography Department of the Film School and years of hands-on work with video. This translates into the quality of every design, not just video.',
     'about-p3':     'I use AI as a workflow support tool — a generator of ideas, an accelerator of iteration. But no algorithm replaces visual awareness and experience working with clients.',
     'stat-exp':     'Years of experience',
     'stat-brands':  'Global brands',
@@ -2083,6 +2113,15 @@ const TRANSLATIONS = {
     'cta-title': 'Let\'s create something <em>together</em>',
     'cta-sub':   'Looking for a designer with a filmmaker\'s eye and experience in print and digital?',
     'cta-btn':   'Get in touch',
+    'hero-see-work': '↓ See work',
+    'cta-showreel': '▶ Watch Showreel',
+    'cv-skills-heading': 'Umiejętności',
+    'cv-skills-list': '<li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik, identyfikacji wizualnych i ilustracji 2D/motion</li><li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja</li><li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa, Illustratora, After Effects, Premiere Pro oraz Figma</li><li>Doświadczenie w DTP i przygotowaniu do druku (InDesign, CMYK, preflight)</li><li>Biegłe poruszanie się w ekosystemie AI — generowanie wideo i obrazów (Higgsfield, Kling, Nanobanana), wsparcie workflow (Claude, Gemini, ChatGPT)</li>',
+    'cv-skills-heading': 'Skills',
+    'cv-skills-list': '<li>Extensive knowledge of traditional 2D/motion graphic design and illustration</li><li>Fluent in film and video production — ability to develop cinematic concepts and execute them for social media and modern media formats</li><li>Proficient in Adobe Creative Suite, especially Photoshop, Illustrator, After Effects, Premiere Pro and Figma</li><li>Experience in DTP and print preparation (InDesign, CMYK, preflight)</li><li>Fluent in AI ecosystem — video and image generation (Higgsfield, Kling, Nanobanana), workflow support (Claude, Gemini, ChatGPT)</li>',
+    'blob-label': 'CV / Portfolio',
+    'cv-about-title': 'About me',
+    'cv-about-body': '<p>I am a graphic and motion designer with over 10 years of experience creating visual identities, campaigns and video materials for global brands and film festivals.</p><p>My visual sensibility was shaped — among other things — by studies at the Cinematography Department of the Film School and years of hands-on work with video. I developed a conscious approach to colour, light and composition. This is the foundation of every project I create — not just video.</p><p>For years I created nearly all the visual production for the Nowe Horyzonty and American Film Festival — posters, DTP, print materials, social media. I worked on visual communication for Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, HP, Philips, Maybelline New York and La Roche-Posay.</p><p>I understand the full production cycle: from concept and graphic design, through DTP and print preparation, to final video and motion delivery. I treat AI as a workflow support tool — a generator of ideas and iteration accelerator, not a substitute for visual awareness.</p><p>I am looking for a place that values both technical craft and visual thinking — and where I can bring both.</p>',
   }
 };
 
@@ -2174,11 +2213,42 @@ function applyLang(lang) {
     if (btnLabel) btnLabel.textContent = lang === 'en' ? 'Download PDF' : 'Pobierz PDF';
   }
 
-  if (typeof PROJECTS !== 'undefined' && PROJECTS.agencies) {
-    PROJECTS.agencies.title = lang === 'en' ? 'Agency Jobs' : 'Prace dla agencji';
-    PROJECTS.agencies.desc  = lang === 'en'
-      ? 'Graphic and video work created for Good Taste agency — music videos, concert visuals and digital campaigns.'
-      : 'Prace graficzne tworzone dla agencji Good Taste — teledyski, oprawa koncertów i kampanie digitalowe.';
+  if (typeof PROJECTS !== 'undefined') {
+    // knights
+    if (PROJECTS.knights) {
+      PROJECTS.knights.desc = lang === 'en'
+        ? '<span style="font-family:var(--font-display);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;display:block;margin-bottom:8px;">The Knights of Unity</span>Creating graphics using AI and prompts to generate images and video. Creating trailers and commercials for own and published games — independently and by leading teams of 2D and 3D artists. Directing, scripting, comprehensive concepts and execution. Developing elements of the company's visual identity. Conceptual work on publishing projects (video games). Monitoring marketing trends and implementing them into daily operations.'
+        : PROJECTS.knights.desc;
+    }
+    // vidsy
+    if (PROJECTS.vidsy) {
+      PROJECTS.vidsy.desc = lang === 'en'
+        ? 'Creating mobile video ads (developing concepts and executing them) for some of the most recognisable brands in the world, including: Warner Bros Games, Marvel & FoxNext, Activision-Blizzard, Netflix, Ubisoft, HP, Frank's, Maybelline, Âme Pure, Philips, La Roche-Posay — at London-based startup Vidsy.'
+        : 'Tworzenie mobilnych reklam wideo (opracowywanie koncepcji oraz wykonanie) dla jednych z najbardziej rozpoznawalnych marek na świecie, m.in.: Warner Bros Games, Marvel & FoxNext, Activision-Blizzard, Netflix, Ubisoft, HP, Frank's, Maybelline, Âme Pure, Philips, La Roche-Posay — w londyńskim startupie Vidsy.';
+    }
+    // festivale
+    if (PROJECTS.festivale) {
+      PROJECTS.festivale.desc = lang === 'en'
+        ? 'MFF Nowe Horyzonty, American Film Festival, Kino Nowe Horyzonty — between 2014–2019 I was one of the main designers responsible for the visual production of these festivals and cinema.<br><br>During that time <strong>the vast majority of graphics and video materials</strong> visible in the cinema space — on screens, walls and floors, on leaflets, side posters, partner banners, zines, magazines and festival booklets — were created with my involvement.<br><br>For the main posters I collaborated with external artists and Homework studio (Warsaw) — I processed and adapted their keyart to all formats, and sometimes created the main graphic directly with the artist on set.<br><br><em>Unfortunately I do not have a complete archive of work — below is only a fragment of what I managed to preserve.</em>'
+        : 'MFF Nowe Horyzonty, American Film Festival, Kino Nowe Horyzonty — w latach 2014–2019 byłem jednym z głównych grafików odpowiedzialnych za produkcję wizualną tych festiwali i kina.<br><br>W tym czasie <strong>znaczna większość grafik i materiałów wideo</strong>, które można było zobaczyć w przestrzeni kina — na ekranach, ścianach i podłogach, na ulotkach, plakatach pobocznych, banerach partnerskich, zinach, magazynach i książeczkach festiwalowych — powstawała przy moim udziale.<br><br>Przy plakatach głównych współpracowałem z zewnętrznymi artystami i studiem Homework (Warszawa) — ich keyart obrabiałem i adaptowałem do wszystkich formatów, a niekiedy sam tworzyłem grafikę główną bezpośrednio z artystą na planie.<br><br><em>Niestety nie dysponuję kompletnym archiwum prac — poniżej jedynie wycinek tego, co udało mi się zachować.</em>';
+    }
+    // ai
+    if (PROJECTS.ai) {
+      PROJECTS.ai.desc = lang === 'en'
+        ? 'My explorations in styles, prompting, achieving target aesthetics and realism. I create my own prompt systems and adjust them to required outcomes, both in image and video form.'
+        : 'Moje eksploracje w stylach, promptowaniu, osiąganiu założonych estetyk i realizmu. Tworzę własne systemy promptów i dostosowuję je do wymaganych rezultatów, zarówno w formie image jak i wideo.';
+    }
+    // agencies
+    if (PROJECTS.agencies) {
+      PROJECTS.agencies.title = lang === 'en' ? 'Good Taste Agency' : 'Good Taste Agency';
+      PROJECTS.agencies.desc  = lang === 'en'
+        ? 'Graphic work created for Good Taste agency related to musician performances and concerts. I developed graphic concepts, executed video editing with motion design elements and designed static versions of the creatives. This is a small sample of the work done in collaboration with them.'
+        : 'Prace graficzne tworzone dla agencji Good Taste związane z występami muzyków i koncertami. Opracowywałem dla nich koncepcje graficzne, realizowałem montaż wideo wraz z elementami motion design i projektowałem statyczne wersje kreacji. To mały wycinek prac zrealizowanych we współpracy z nimi.';
+    }
+    // showreel
+    if (PROJECTS.showreel) {
+      PROJECTS.showreel.title = lang === 'en' ? 'Film & Motion Showreel 2025' : 'Film & Motion Showreel 2025';
+    }
   }
 }
 
@@ -2384,7 +2454,7 @@ function toggleLang() {
 <div id="cvBlob" onclick="openCV()" title="CV & Portfolio">
   <div class="blob-pill">
     <span class="blob-pill-icon">↗</span>
-    <span class="blob-pill-label">CV / Portfolio</span>
+    <span class="blob-pill-label" data-i18n="blob-label">CV / Portfolio</span>
   </div>
 </div>
 
@@ -2398,8 +2468,8 @@ function toggleLang() {
         <span data-i18n-cv-btn>Pobierz PDF</span>
       </a>
       <div class="cv-skills">
-        <h3 class="cv-skills-heading">Umiejętności</h3>
-        <ul class="cv-skills-list">
+        <h3 class="cv-skills-heading" data-i18n="cv-skills-heading">Umiejętności</h3>
+        <ul class="cv-skills-list" data-i18n="cv-skills-list">
           <li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik, identyfikacji wizualnych i ilustracji 2D/motion</li>
           <li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja</li>
           <li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa, Illustratora, After Effects, Premiere Pro oraz Figma</li>
@@ -2409,17 +2479,15 @@ function toggleLang() {
       </div>
     </div>
     <div class="cv-right">
-      <h2 class="cv-heading">List motywacyjny</h2>
+      <h2 class="cv-heading" data-i18n="cv-about-title">O mnie</h2>
       <p class="cv-subheading">Mateusz Rychlik — Graphic &amp; Motion Designer</p>
       <div class="cv-divider"></div>
-      <div class="cv-body">
-        <p>Szanowni Państwo,</p>
-        <p>Zgłaszam się jako grafik i motion designer z filmowym wyczuciem obrazu i ponad 10-letnim doświadczeniem w tworzeniu identyfikacji wizualnych, kampanii i materiałów wideo dla globalnych marek.</p>
-        <p>Mam filmowo-fotograficzne wyczucie obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, budując świadome podejście do koloru, światła i kompozycji. To fundament każdego projektu, który tworzę.</p>
-        <p>Przez lata tworzyłem identyfikacje wizualne festiwali filmowych (Nowe Horyzonty, American Film Festival), kampanie wideo dla Warner Bros, HBO, Netflix, Ubisoft, Blizzard i wielu innych — a także materiały drukowane i DTP.</p>
-        <p>Rozumiem cały cykl produkcji: od koncepcji, przez projekt graficzny i DTP, po finalną realizację wideo i motion. AI traktuję jako narzędzie wspomagające — generator pomysłów i iteracji, nie zastępstwo świadomości wizualnej.</p>
-        <p>W załączeniu przesyłam portfolio oraz przykłady prac. Chętnie opowiem o swoim procesie twórczym podczas rozmowy.</p>
-        <div class="cv-signature">Z wyrazami szacunku,<br>Mateusz Rychlik</div>
+      <div class="cv-body" data-i18n="cv-about-body">
+        <p>Jestem grafikiem i motion designerem z ponad 10-letnim doświadczeniem w tworzeniu identyfikacji wizualnych, kampanii i materiałów wideo dla globalnych marek i festiwali filmowych.</p>
+        <p>Mam filmowo-fotograficzne wyczucie obrazu — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji. To fundament każdego projektu, który tworzę — nie tylko wideo.</p>
+        <p>Przez lata tworzyłem niemal całość produkcji wizualnej festiwali Nowe Horyzonty i American Film Festival — plakaty, DTP, materiały drukowane, social media. Pracowałem przy komunikacji wizualnej dla Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, HP, Philips, Maybelline New York i La Roche-Posay.</p>
+        <p>Rozumiem cały cykl produkcji: od koncepcji i projektu graficznego, przez DTP i przygotowanie do druku, po finalną realizację wideo i motion. AI traktuję jako narzędzie wspomagające — generator pomysłów i przyspieszacz iteracji, nie zastępstwo świadomości wizualnej.</p>
+        <p>Szukam miejsca, gdzie ceni się zarówno warsztat techniczny, jak i myślenie wizualne — i gdzie mogę wnieść jedno i drugie.</p>
       </div>
     </div>
   </div>
