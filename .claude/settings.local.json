@@ -5,7 +5,10 @@
       "Bash(python3:*)",
       "Bash(git add index.html)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(gh api repos/matirychlik-arch/portfolio-graphic/contents/SCREENY%20DO%20HOME)",
+      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio-graphic/contents/SCREENY%20DO%20HOME\")",
+      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio-graphic/contents/\")"
     ]
   }
 }
